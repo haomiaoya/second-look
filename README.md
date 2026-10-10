@@ -68,6 +68,7 @@ Windows PowerShell 的 `$HOME` 与 WSL2 的 Linux `~` 可能不同，请安装�
 second-look/
 ├── SKILL.md                    # 单入口、模式自动选择、审查流程及评分原则
 ├── README.md                   # 安装与使用
+├── LICENSE                     # MIT 许可证
 ├── references/
 │   ├── scoring-rubric.md       # 详细评分锚点与上限
 │   ├── question-bank.md        # 高辨别力反问
@@ -89,3 +90,9 @@ python -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
 请用 `tests/scenarios.md` 在实际 Claude Code / Codex 会话测试跨领域反问行为和评分校准。单元测试只验证脚本和文件一致性，不能证明真实 AI 反问质量。`tests/self-audit.md` 是早期设计自审记录，不代表本 Skill 已经过独立实测。
+
+---
+
+## 许可证
+
+MIT，见 [LICENSE](LICENSE)。可自由使用、修改与再分发，保留版权声明即可。
