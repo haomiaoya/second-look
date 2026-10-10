@@ -1,10 +1,14 @@
-# 二看 Second Look v2.1
+# 二看 Second Look
 
 > **一看，解决问题。二看，审视答案。**
 
 **一句话**：AI 做完或说完后，你只需叫它“二看”：重新对齐原始问题，检验证据，提出能改变判断的反问，并给有依据的评分。适用于代码、文档、方案、文章、观点、重大决定等，不限领域。
 
 **核心理念**：不盲从，不刻意挑错；重新审视，证据说话。
+
+**适用范围**：代码、文档、方案、文章、观点、重大决定等，不限领域。
+
+---
 
 ## 如何调用
 
@@ -14,6 +18,8 @@
 - **Claude Code**：`/second-look`（按客户端实际识别的命令为准）
 
 若先前对话已有待审对象，直接调用即可。它会从上下文自动确定：审查对象、适用模式、审查深度、是否适合打分。不需要记住 audit、challenge、deep 等模式名。想指定对象时，直接补一句自然语言，比如“重点审查刚才的需求覆盖”。
+
+---
 
 ## 默认输出
 
@@ -35,16 +41,24 @@
 审查代码、文件或报告时**必须先用工具真正打开内容再下判断**，凭记忆和摘要不算核验。
 确实打不开就写"未找到"并把结论降为 `无法确认`，不编造内容后照常打分。
 
-## 安装目录
+---
 
-解压后确保目录名与 Frontmatter `name` 一致：
+## 安装
+
+```bash
+git clone https://github.com/haomiaoya/second-look.git ~/.claude/skills/second-look
+```
+
+安装后确保目录名为 `second-look`，与 SKILL.md Frontmatter 的 `name` 一致。
 
 | 客户端 | 用户级安装目录 | 项目安装目录 |
 | --- | --- | --- |
 | Claude Code | `~/.claude/skills/second-look/` | `<project>/.claude/skills/second-look/` |
 | Codex | `~/.agents/skills/second-look/` | `<project>/.agents/skills/second-look/` |
 
-Windows PowerShell 的 `$HOME` 与 WSL2 的 Linux `~` 可能不同，请安装到你实际运行客户端所用的用户目录。若还安装了老版 `critical-inquiry`，建议删除旧目录，避免重复触发；不是简单修改 ZIP 文件名。
+Windows PowerShell 的 `$HOME` 与 WSL2 的 Linux `~` 可能不同，请安装到你实际运行客户端所用的用户目录。若同时装了其他同类审查 Skill，建议删除旧目录以避免重复触发，而不是简单重命名。
+
+---
 
 ## 文件结构
 
@@ -62,6 +76,8 @@ second-look/
 └── tests/                     # 静态测试、行为验收场景、历史自审记录
 ```
 
+---
+
 ## 验证
 
 在 Skill 目录内运行：
@@ -70,4 +86,4 @@ second-look/
 python -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
-请用 `tests/scenarios.md` 在实际 Claude Code / Codex 会话测试跨领域反问行为和评分校准。单元测试只验证脚本和文件一致性，不能证明真实 AI 反问质量。`tests/self-audit.md` 是旧名称 v2.0 的历史设计自审，不是 v2.1 经独立实测的证明。
+请用 `tests/scenarios.md` 在实际 Claude Code / Codex 会话测试跨领域反问行为和评分校准。单元测试只验证脚本和文件一致性，不能证明真实 AI 反问质量。`tests/self-audit.md` 是早期设计自审记录，不代表本 Skill 已经过独立实测。
